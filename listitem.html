@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="stylesheet" href="./styles/index.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script
+			  src="https://code.jquery.com/jquery-3.6.0.min.js"
+			  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			  crossorigin="anonymous"></script>
+</head>
+<body>
+    <!--Navbar-->
+    <header>
+        <img src="./assets/MetaVault.png" alt="" style="width: 100px;">
+        <ul class="nav_items">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="market.html">Market</a></li>
+            <li><a href="index.html">Contact</a></li>
+        </ul>
+        <a href="vault.html" ><button class="vault_btn">Vault</button></a>
+
+        
+    </header>
+
+    <!--Ending of Navbar-->
+    
+    <!-- Main Header Content-->
+    <section style="display: flex; justify-content: center; align-items: center">
+
+        <div style="width: 100%; height: 10%; background-color: black; top: 0; margin-right: auto; ">
+            <div style="height: 300px; padding-top: 70px;">
+                <center>
+                    <h1 style="color: white; font-weight: 700; font-size: 40px;">List Item</h1>
+                </center>
+            
+            </div>
+        </div>
+        
+        <div class="market-item-box">
+            <section id="contact">
+        
+                <div class="container">
+                        <label for="item">Item</label>
+                        <input type="text" id="item" name="Name" placeholder="item name...">
+
+                        <label for="img">Image Link</label>
+                        <input type="text" id="image" name="Image Link" placeholder="url...">
+        
+                        <label for="price">Price</label>
+                        <input type="text" id="price" name="Price" placeholder="price...">
+        
+                        
+    
+                        <center>
+                            <button type="submit" value="Submit" onclick="pushMarket()" class="vault_btn">Submit</button>
+
+                        </center>
+                        </div>
+        </section>
+        </div>
+         
+            
+    </section>
+
+    <script>
+
+
+         // Import the functions you need from the SDKs you need
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyAyrIGT9-PhUzO_zJaY0nMv8qCmadsKBPg",
+            authDomain: "skills-usa-metavault.firebaseapp.com",
+            projectId: "skills-usa-metavault",
+            storageBucket: "skills-usa-metavault.appspot.com",
+            messagingSenderId: "1035005062659",
+            appId: "1:1035005062659:web:faea904ddfd882f8ed6836",
+            measurementId: "G-B4CB5Y533B"
+            };
+    
+            // Initialize Firebase
+            const app = firebase.initializeApp(firebaseConfig);
+            var db = firebase.firestore();
+
+            async function pushMarket() {
+
+                var userID = await localStorage.getItem('userID')
+
+
+                // Add a new document in collection "cities"
+                db.collection("MarketPlace").doc().set( {
+                name: document.getElementById("item").value,
+                image: document.getElementById("image").value,
+                price: document.getElementById("price").value,
+                owner: userID,
+                itemStatus: "for-sale"
+                });
+            }
+    </script>
+
+    
+
+
+</body>
+</html>

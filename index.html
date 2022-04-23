@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetaVault</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!--Navbar-->
+    <header>
+        <img src="./assets/MetaVault.png" alt="" style="width: 100px;">
+        <ul class="nav_items">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="market.html">Market</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="vault.html"><button class="vault_btn">Vault</button></a>
+
+
+    </header>
+
+    <!--Ending of Navbar-->
+
+    <!-- Main Header Content-->
+
+    <script>
+        function goToMarket(){
+            window.location = "/market.html"
+        }
+
+        async function initLocalStorage(){
+
+            var idExists = await localStorage.getItem('userID');
+
+            if(!idExists){
+                var userID = Math.floor(Math.random() * 10000000);
+                console.log(userID)
+                localStorage.setItem('userID', userID);
+            } else {
+                console.log("ID Exists: " + idExists.toString())
+            }
+
+        }
+
+        initLocalStorage()
+    </script>
+    <section>
+        <div>
+
+            <div class="rowFlex">
+                <div>
+                    <h1 class="main-header-title">A <span class="color-scheme">Marketplace</span> <br>Powered by <span
+                            class="color-scheme">Crypto</span></h1>
+                    <p class = "main-header-subhead">A platform that bridges the gap between the metaverse and reality, <br> buy anything from NFTs to physcial items!</p>
+
+                    <button class="explore-btn" onclick="goToMarket()">Explore the Market</button>
+                </div>
+
+                <div style = "position: absolute; top: 30%; left: 55%;">
+                    <img src = "images/1.png"/>
+                </div>
+
+
+                <div style = "position: absolute; top: 30%; left: 71%;">
+                    <img src = "images/2.png"/>
+                </div>
+
+                <div style = "position: absolute; top: 30%; left: 87%;">
+                    <img src = "images/3.png"/>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!--Forum for Contact-->
+    <div style="height: 180px;"></div>
+
+    <center>
+        <h1>Question?</h1>
+
+    </center>
+    <section id="contact">
+        
+            <div class="container">
+                <form>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="Name" placeholder="name...">
+    
+                   
+    
+                    
+    
+                    <label for="subject">Subject</label>
+                    <textarea id="subject" name="subject" placeholder="question..." style="height:200px"></textarea>
+    
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+    </section>
+
+   
+</body>
+
+</html>
